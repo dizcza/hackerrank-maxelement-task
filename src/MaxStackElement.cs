@@ -2,6 +2,49 @@ using System;
 
 class Solution {
     static void Main(String[] args) {
+        
+        
+        public static List<int> getMax(List<string> op)
+    {
+        var ls =new List<int>();
+        var ls1 =new List<int>();
+        var lsM =new List<int>();
+        int max=int.MinValue;
+        for(int i=0;i<op.Count;i++)
+        {
+            string [] a =op[i].Split(' ');
+            if(a[0]=="1")
+            {
+                int t=Convert.ToInt32(a[1]);
+                ls1.Add(t);
+                if( t>max)
+                {
+                 max=t;
+                }
+                lsM.Add(max);      
+              
+            }
+            else if(a[0]=="2")
+            { 
+                ls1.RemoveAt(ls1.Count-1);
+                lsM.RemoveAt(lsM.Count-1);
+             if(lsM.Count>0)
+             {
+                 max=lsM[lsM.Count-1];
+             }
+             else
+             {
+                 max=int.MinValue;
+             }
+            }
+            else
+            {
+                ls.Add(lsM[lsM.Count-1]);
+            }
+        }
+        return ls;
+    }
+        
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
         int N, val, currMax, pointer = 0;
         char query;
